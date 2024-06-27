@@ -1,8 +1,7 @@
 "use server";
 
-import { stripe } from "@/services/stripe/instance";
 import { formSchema } from "./formSchema";
-import { createStripeCheckoutLink } from "@/services/stripe/create-checkout-link";
+import { createStripeCheckoutLink } from "@/lib/stripe/use-cases/create-checkout-link";
 
 
 export type FormState = {
