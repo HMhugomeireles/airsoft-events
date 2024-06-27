@@ -1,5 +1,5 @@
 export const defaultUrl = process.env.VERCEL_URL
-  ? `${process.env.VERCEL_URL}`
+  ? "https://airsoft-events.vercel.app"
   : "http://localhost:3000";
 
 
