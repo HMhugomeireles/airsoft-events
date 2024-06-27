@@ -1,17 +1,23 @@
-"use client"
-
 import Link from "next/link";
 import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/client";
 import { redirect } from "next/navigation";
-import { SubmitButton } from "./submit-button";
 import Image from "next/image";
 import { TypographyH4 } from "@/components/ui/typography";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { handleLogin } from "./actions";
+import { getUserDetails } from "@/lib/repositories/user";
 
-export default function Login() {
+export default async function Profile({
+  params,
+  searchParams,
+}: {
+  params: { profileId: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
+  //const { profile } = await getUserDetails(params.profileId);
+  console.log(searchParams, params.profileId)
+
   return (
     <div className="flex min-h-screen flex-col my-4">
       <section className="flex justify-center items-center mb-4">
@@ -28,10 +34,12 @@ export default function Login() {
 
       <section className="grid h-screen place-items-center">
         <div className="flex flex-col max-w-96">
-           <Button
-                className="w-full"
-                onClick={() => handleLogin('google')}
-            >Google</Button>
+           {/* <Image 
+              alt="player profile image"
+              src={}
+              width={40}
+              height={80}
+           /> */}
         </div>
       </section>
     </div>
