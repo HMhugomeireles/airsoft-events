@@ -1,6 +1,6 @@
-export const defaultUrl = process.env.VERCEL_URL
-  ? "https://airsoft-events.vercel.app"
-  : "http://localhost:3000";
+export const defaultUrl = process.env.NODE_ENV === 'development'
+  ? "http://localhost:3000"
+  : "https://airsoft-events.vercel.app";
 
 
 export const getErrorMessage = (
