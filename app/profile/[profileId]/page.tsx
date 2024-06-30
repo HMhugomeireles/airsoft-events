@@ -52,8 +52,8 @@ export default async function Profile({
         </div>
         <div>
           <TypographyP>{profile.apd}</TypographyP>
-          <TypographyP>{profile.apdNumber}</TypographyP>
-          <TypographyP>{profile.apdExpiresAt}</TypographyP>
+          <TypographyP>{profile.apd_number}</TypographyP>
+          <TypographyP>{profile.apd_expires_at}</TypographyP>
         </div>
       </section>
 
