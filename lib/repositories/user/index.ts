@@ -24,17 +24,19 @@ export async function getUserDetails(userId: string): Promise<UserDetails> {
     const { data: playerGuns } = await supabase.from("player_gun").select('*').eq('user_id', userId);
     const { data: eventsPlayed } = await supabase.from("player_gun_event").select('*').eq('user_id', userId);
 
+    console.log(playerProfile)
+
     return {
         avatar: `${user?.user_metadata.avatar_url}`,
         email: `${user?.email}`,
         firstName: `${formatFirstName(user?.user_metadata.full_name)}`,
         lastName: `${formatLastName(user?.user_metadata.full_name)}`,
-        nick: ``,
-        birthDay: `${user?.user_metadata.avatar_url}`,
-        country: `${user?.user_metadata.avatar_url}`,
-        state: `${user?.user_metadata.avatar_url}`,
-        apd: `${user?.user_metadata.avatar_url}`,
-        apdNumber: `${user?.user_metadata.avatar_url}`,
-        apdExpiresAt: `${user?.user_metadata.avatar_url}`,
+        nick: `${playerProfile.nick}`,
+        birthDay: `${playerProfile.birth_day}`,
+        country: `${playerProfile.country}`,
+        state: `${playerProfile.state}`,
+        apd: `${playerProfile.apd}`,
+        apdNumber: `${playerProfile.app_number}`,
+        apdExpiresAt: `${playerProfile.apd_expires_at}`,
     }
 }

@@ -1,9 +1,5 @@
-import Link from "next/link";
-import { headers } from "next/headers";
-import { createClient } from "@/utils/supabase/client";
-import { redirect } from "next/navigation";
 import Image from "next/image";
-import { TypographyH4 } from "@/components/ui/typography";
+import { TypographyH1, TypographyH2, TypographyH4, TypographyP } from "@/components/ui/typography";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { getUserDetails } from "@/lib/repositories/user";
@@ -34,17 +30,34 @@ export default async function Profile({
 
       <Separator />
 
-      <section className="grid h-screen place-items-center">
-        <div className="flex flex-col max-w-96">
+      <section className="flex flex-col">
+        <div className="flex items-center justify-evenly mt-16">
            <Image 
               alt="player profile image"
               src={profile.avatar}
-              width={40}
-              height={80}
+              width={120}
+              height={120}
+              className="rounded-full border-white border-2"
            />
-           <pre>{JSON.stringify(profile, null, 2)}</pre>
+           <div className="mt-4">
+            <h1 className="text-4xl font-bold">{profile.nick}</h1>
+            <h3 className="text-xl">{profile.firstName} {profile.lastName}</h3>
+            <p>{profile.birthDay}</p>
+          </div>
+        </div>
+        
+        <div>
+          <TypographyP>{profile.country}</TypographyP>
+          <TypographyP>{profile.state}</TypographyP>
+        </div>
+        <div>
+          <TypographyP>{profile.apd}</TypographyP>
+          <TypographyP>{profile.apdNumber}</TypographyP>
+          <TypographyP>{profile.apdExpiresAt}</TypographyP>
         </div>
       </section>
+
+      
     </div>
   );
 }
