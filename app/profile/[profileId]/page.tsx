@@ -7,6 +7,7 @@ import { TypographyH4 } from "@/components/ui/typography";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { getUserDetails } from "@/lib/repositories/user";
+import { authGuard } from "@/utils/supabase/authGuard";
 
 export default async function Profile({
   params,
@@ -15,7 +16,8 @@ export default async function Profile({
   params: { profileId: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  //const { profile } = await getUserDetails(params.profileId);
+  await authGuard()
+  const profile = await getUserDetails(params.profileId);
   console.log(searchParams, params.profileId)
 
   return (
@@ -34,12 +36,13 @@ export default async function Profile({
 
       <section className="grid h-screen place-items-center">
         <div className="flex flex-col max-w-96">
-           {/* <Image 
+           <Image 
               alt="player profile image"
-              src={}
+              src={profile.avatar}
               width={40}
               height={80}
-           /> */}
+           />
+           <pre>{JSON.stringify(profile, null, 2)}</pre>
         </div>
       </section>
     </div>

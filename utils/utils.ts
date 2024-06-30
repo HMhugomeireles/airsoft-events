@@ -19,3 +19,13 @@ export function formatName(fullName: string) {
   const nameSplit = fullName.split(" ");
   return `${nameSplit.at(0)?.charAt(0)}${nameSplit.at(nameSplit.length - 1)?.charAt(0)}`;
 }
+
+
+export function formatFirstName(fullName: string) {
+  return fullName.split(' ').at(0)
+}
+
+export function formatLastName(fullName: string) {
+  const nameSplit = fullName.split(" ");
+  return nameSplit.at(nameSplit.length - 1);
+}

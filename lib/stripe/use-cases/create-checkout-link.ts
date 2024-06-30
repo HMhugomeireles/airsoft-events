@@ -2,29 +2,35 @@ import { defaultUrl } from "@/utils/utils";
 import { stripe } from "../index";
 
 type Props = {
-    amount: number;
-    productName: string;
-    productDescription: string;
+    product: {
+        amount: number;
+        productName: string;
+        productDescription: string;
+    }
+    customer: {
+        email: string;
+    }
 }
 
 
 export async function createStripeCheckoutLink({
-    amount,
-    productName,
-    productDescription
+    customer,
+    product
 }: Props) {
     const domain = defaultUrl;
     const session = await stripe.checkout.sessions.create({
+        return_url: `${domain}/event-detail/buy-ticket`,
         success_url: `${domain}/event-detail/thank-you`,
         cancel_url: `${domain}/event-detail/buy-ticket`,
+        customer_email: customer.email,
         mode: 'payment',
         line_items: [{
             price_data: {
-                unit_amount: amount * 100,
+                unit_amount: product.amount * 100,
                 currency: 'eur',
                 product_data: {
-                    name: productName,
-                    description: productDescription
+                    name: product.productName,
+                    description: product.productDescription
                 }
             },
             quantity: 1

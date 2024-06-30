@@ -14,9 +14,7 @@ import { formatName } from "@/utils/utils";
 export default async function Index() {
   const supabase = createClient();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data: { user }, } = await supabase.auth.getUser();
 
 
   return (
