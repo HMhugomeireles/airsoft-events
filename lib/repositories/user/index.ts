@@ -36,7 +36,7 @@ export async function getUserDetails(userId: string): Promise<UserDetails> {
         country: `${playerProfile.country}`,
         state: `${playerProfile.state}`,
         apd: `${playerProfile.apd}`,
-        apdNumber: `${playerProfile.app_number}`,
+        apdNumber: `${playerProfile.apd_number}`,
         apdExpiresAt: `${playerProfile.apd_expires_at}`,
     }
 }

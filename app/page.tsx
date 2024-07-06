@@ -40,7 +40,7 @@ export default async function Index() {
                 <Menubar>
                   <MenubarMenu>
                     <MenubarTrigger>
-                      <Avatar>
+                      <Avatar className="cursor-pointer">
                         <AvatarImage src={user.user_metadata.avatar_url} />
                         <AvatarFallback>{formatName(user.user_metadata.full_name)}</AvatarFallback>
                       </Avatar>
